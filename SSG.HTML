@@ -1,207 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soporte Sloet Games - Centro de Reportes</title>
-<style>
-    /* Reset y fuentes */
-    body, html { margin:0; padding:0; font-family:'Segoe UI', Arial, sans-serif; transition:0.3s; }
-    body { background:#f0f2f5; color:#222; }
-    body.dark { background:#121212; color:#e0e0e0; }
-
-    /* Hero azul completo */
-    .hero {
-        background: linear-gradient(135deg,#007bff,#004080);
-        color:white;
-        width:100%;
-        padding:40px 20px;
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
-        box-sizing: border-box;
-        position: relative;
-    }
-    .hero h1 { margin:0; font-size:28px; font-weight:bold; letter-spacing:1px; }
-    .hero small { display:block; margin-top:5px; font-size:14px; color:#e0e0e0; }
-
-    .theme-toggle { background:white; color:#007bff; border:none; padding:8px 15px; border-radius:8px; font-weight:bold; cursor:pointer; }
-    body.dark .theme-toggle { background:#333; color:#4da3ff; }
-
-    /* Contenedor principal */
-    .container { max-width:700px; margin:auto; padding:20px; }
-
-    /* Secciones y títulos */
-    section { padding:25px 0; position:relative; }
-    section h2 { font-size:22px; text-align:center; margin-bottom:15px; color:#007bff; position:relative; }
-    section h2::after { content:""; display:block; width:60px; height:3px; background:#007bff; margin:8px auto 0; border-radius:2px; }
-
-    /* Info / legal / qué hacemos */
-    .info-section { background:#f7f9fc; padding:20px; border-radius:12px; margin-bottom:25px; box-shadow:0 3px 10px rgba(0,0,0,0.1); position:relative; }
-    body.dark .info-section { background:#2a2a2a; }
-    .info-section p { margin:10px 0; line-height:1.5; }
-    .verified { color:#00c851; font-weight:bold; margin-right:5px; }
-
-    /* Formulario */
-    form { display:flex; flex-direction:column; gap:15px; }
-    .form-card { background:#eaf1ff; padding:15px 20px; border-radius:10px; border-left:5px solid #007bff; box-shadow:0 3px 10px rgba(0,0,0,0.1); }
-    body.dark .form-card { background:#2a2a2a; border-left:5px solid #4da3ff; }
-    input, textarea { padding:12px; border-radius:10px; border:1px solid #ccc; font-size:14px; width:100%; box-sizing:border-box; }
-    body.dark input, body.dark textarea { background:#3a3a3a; color:#e0e0e0; border:1px solid #555; }
-    textarea { min-height:100px; resize:vertical; }
-    button.submit { background:#007bff; color:white; padding:15px; border:none; border-radius:10px; font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s; }
-    button.submit:hover { background:#0056b3; transform:translateY(-2px); box-shadow:0 5px 15px rgba(0,0,0,0.2); }
-
-    /* Checkbox */
-    .terms { display:flex; align-items:center; gap:8px; font-size:14px; }
-
-    /* Divider */
-    .section-divider { border-top:2px solid #007bff; margin:30px 0; }
-
-    /* Footer negro */
-    .footer-black {
-        background:#111;
-        color:white;
-        display:flex;
-        justify-content: space-between;
-        padding:20px 30px;
-        box-sizing: border-box;
-        margin-top:40px;
-        border-radius:0;
-    }
-    .footer-black .links, .footer-black .info { display:flex; flex-direction:column; gap:12px; font-size:16px; }
-    .footer-black a { color:white; text-decoration:none; }
-    .footer-black a:hover { text-decoration:underline; }
-    .footer-black .divider { width:1px; background:#555; margin:0 20px; }
-
-    .footer-black small { margin-top:10px; font-size:12px; color:#aaa; }
-
-    /* Actualizaciones */
-    .updates-section { background:#eaf1ff; padding:15px 20px; border-radius:12px; margin-bottom:25px; box-shadow:0 3px 10px rgba(0,0,0,0.1); font-size:14px; position:relative; }
-    body.dark .updates-section { background:#2a2a2a; }
-    .updates-section li::before { content:"✔️"; margin-right:6px; color:#00c851; }
-</style>
-</head>
-<body>
-
-<!-- Hero azul completo -->
-<div class="hero">
-    <div>
-        <h1>Sloet Games</h1>
-        <small>Equipo de soporte técnico no 
-oficial de Olzhass Games.</small>
-    </div>
-    <button class="theme-toggle" onclick="toggleDarkMode()">O / C</button>
-</div>
-
-<div class="container">
-
-    <!-- Actualizaciones -->
-    <div class="updates-section">
-        <h3>Actualizaciones Beta 4.9.4.2</h3>
-        <ul>
-            <li>Optimización de rendimiento en la Beta 4.9.4.2 CPM.</li>
-            <li>(Beta) Página en desarrollo pero funcional.</li>
-        </ul>
-    </div>
-
-    <!-- Info / legal / qué hacemos -->
-    <div class="info-section">
-        <h2><span class="verified">✔️</span>Política de Privacidad</h2>
-        <p>En <strong>Sloet Games</strong>, valoramos tu privacidad. Toda la información será usada únicamente para gestionar reportes de Car Parking Multiplayer.</p>
-    </div>
-
-    <div class="info-section">
-        <h2><span class="verified">✔️</span>Qué hacemos</h2>
-        <p>Somos un equipo de soporte <strong>no oficial</strong>, ayudando a recopilar problemas de jugadores para mejorar Car Parking Multiplayer.</p>
-    </div>
-
-    <div class="info-section">
-        <h2><span class="verified">✔️</span>Cómo usamos los datos</h2>
-        <p>Los datos (nombre, correo, modelo de móvil, versión, descripción o capturas) se envían directamente al equipo de desarrollo de CPM y a nuestro equipo para análisis y seguimiento.</p>
-    </div>
-
-    <!-- Formulario -->
-    <section>
-        <h2>Reporte de Problema</h2>
-        <form id="reporteForm">
-            <div class="form-card">
-                <label for="nombre">Nombre o Apodo</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre o apodo" required>
-            </div>
-            <div class="form-card">
-                <label for="modelo">Modelo del Móvil</label>
-                <input type="text" id="modelo" name="modelo" placeholder="Ej: Samsung Galaxy S23" required>
-            </div>
-            <div class="form-card">
-                <label for="version">Versión del Móvil</label>
-                <input type="text" id="version" name="version" placeholder="Ej: Android 14" required>
-            </div>
-            <div class="form-card">
-                <label for="correo">Correo Electrónico</label>
-                <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
-            </div>
-            <div class="form-card">
-                <label for="problema">Descripción del Problema</label>
-                <textarea id="problema" name="problema" placeholder="Describe el problema aquí..." required></textarea>
-            </div>
-            <div class="form-card">
-                <label for="archivo">Video o Captura (opcional)</label>
-                <input type="file" id="archivo" name="archivo" accept="image/*,video/*">
-            </div>
-            <div class="form-card terms">
-                <input type="checkbox" id="consent" required>
-                <label for="consent">He leído y acepto la Política de Privacidad y los Términos de Uso.</label>
-            </div>
-            <button type="submit" class="submit">Enviar Reporte</button>
-        </form>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <h3>¿Cómo usamos tu reporte?</h3>
-    <p>Los reportes se envían al equipo de desarrollo de CPM y a nuestro equipo para análisis y seguimiento. Tu aporte ayuda a mejorar el juego.</p>
-</div>
-
-<!-- Footer negro tipo Activision -->
-<div class="footer-black">
-    <div class="links">
-        <strong>Redes Sociales</strong>
-        <a href="https://chat.whatsapp.com/KYSXEPpQ84O3RWOsj8VYPl?mode=ems_copy_t" target="_blank">WhatsApp</a>
-        <a href="https://www.instagram.com/sloetgames" target="_blank">Instagram</a>
-        <a href="https://tiktok.com/@leduaresquivel" target="_blank">TikTok</a>
-        <a href="https://discord.gg/CfD9XBkASr" target="_blank">Discord</a>
-    </div>
-    <div class="divider"></div>
-    <div class="info">
-        <strong>Legal / Seguridad</strong>
-        <span>Política de Privacidad</span>
-        <span>Términos de Uso</span>
-        <span>Seguridad de Datos</span>
-        <small>No somos un equipo de soporte oficial de CPM, pero colaboramos de manera no oficial.</small>
-    </div>
-</div>
-
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-(function(){ emailjs.init("PXv74B17lErfttNav"); })();
-
-document.getElementById('reporteForm').addEventListener('submit', function(event){
-    event.preventDefault();
-    if(!document.getElementById('consent').checked){
-        alert('❌ Debes aceptar la Política de Privacidad y los Términos de Uso.');
-        return;
-    }
-    emailjs.sendForm('service_rzdps2b', 'template_vqfdj2e', this)
-    .then(function(){ 
-        alert('✅ Reporte enviado correctamente. Gracias por tu colaboración.'); 
-        document.getElementById('reporteForm').reset(); 
-    }, function(error){ 
-        alert('❌ Error al enviar el reporte: '+JSON.stringify(error)); 
-    });
-});
-
-function toggleDarkMode(){ document.body.classList.toggle('dark'); }
-</script>
-</body>
-</html>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    margin: 0;
+}
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    max-width: 800px;
+    width: 100%;
+}
+h1, h2 { text-align: center; }
+h1 { font-size: 32px; margin-bottom: 25px; }
+h2 { font-size: 24px; margin: 20px 0 15px; }
+.form-card {
+    background-color: #f7f9fc;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 5px; }
+textarea { resize: vertical; min-height: 100px; }
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover { background-color: #0056b3; }
+.legal-section {
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}

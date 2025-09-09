@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soporte Sloet Games - Centro de Reportes</title>
+</head>
+<body>
+<div class="container">
+    <h1>Soporte Sloet Games</h1>
+
+    <!-- Formulario de soporte -->
+    <form id="reporteForm">
+        <div class="form-card">
+            <label for="nombre">Nombre o Apodo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre o apodo" required>
+        </div>
+
+        <div class="form-card">
+            <label for="modelo">Modelo del Móvil</label>
+            <input type="text" id="modelo" name="modelo" placeholder="Ej: Samsung Galaxy S23" required>
+        </div>
+
+        <div class="form-card">
+            <label for="version">Versión del Móvil</label>
+            <input type="text" id="version" name="version" placeholder="Ej: Android 14" required>
+        </div>
+
+        <div class="form-card">
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+        </div>
+
+        <div class="form-card">
+            <label for="problema">Descripción del Problema</label>
+            <textarea id="problema" name="problema" maxlength="1000" placeholder="Describe tu problema (máx 1000 caracteres)" required></textarea>
+        </div>
+
+        <div class="form-card">
+            <label for="archivo">Video o Captura (opcional)</label>
+            <input type="file" id="archivo" name="archivo" accept="image/*,video/*">
+        </div>
+
+        <div class="form-card">
+            <input type="checkbox" id="consent" required>
+            <label for="consent">
+                He leído y acepto la <a href="#privacidad">Política de Privacidad</a> y los <a href="#terminos">Términos de Uso</a>.
+            </label>
+        </div>
+
+        <button type="submit">Enviar Reporte</button>
+    </form>
+
+    <!-- Secciones legales -->
+    <div class="legal-section" id="privacidad">
+        <h2>Política de Privacidad</h2>
+        <p>En <strong>Sloet Games</strong>, valoramos tu privacidad y seguridad. Toda la información proporcionada se usará exclusivamente para gestionar tu reporte.</p>
+    </div>
+
+    <div class="legal-section" id="terminos">
+        <h2>Términos de Uso</h2>
+        <p>Al enviar un reporte, aceptas que <strong>Sloet Games</strong> actúa como soporte técnico no oficial de <strong>Car Parking Multiplayer (CPM)</strong>.</p>
+    </div>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){ emailjs.init("PXv74B17lErfttNav"); })();
+
+  const form = document.getElementById('reporteForm');
+  form.addEventListener('submit', function(event){
+      event.preventDefault();
+
+      // Validar consentimiento
+      if(!document.getElementById('consent').checked){
+          alert('❌ Debes aceptar la Política de Privacidad y los Términos de Uso.');
+          return;
+      }
+
+      // Enviar formulario con EmailJS
+      emailjs.sendForm('service_rzdps2b', 'template_vqfdj2e', this)
+      .then(() => {
+          alert('✅ Reporte enviado correctamente. Gracias por tu colaboración.');
+          form.reset();
+      }, (error) => {
+          alert('❌ Error al enviar el reporte: ' + JSON.stringify(error));
+      });
+  });
+</script>
+</body>
+</html>
